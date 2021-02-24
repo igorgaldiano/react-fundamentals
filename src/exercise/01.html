@@ -25,11 +25,11 @@
 <body>
     <div id="root"></div>
     <script type="module">
-       let div = document.createElement('div') //cita um novo elemento na página
-       div.textContent = 'Hello World!'
-       div.textContent = ' container'
-
-       //<div class ='container'>Hello World
+     const rootElement = document.getElementById('root')
+    const element = document.createElement('div')
+    element.textContent = 'Hello World do Igor'
+    element.className = 'container'
+    rootElement.append(element)
 
         document.queryselector('#root').append(div)
 
