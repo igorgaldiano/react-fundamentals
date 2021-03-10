@@ -3,6 +3,7 @@
 
 <body>
   <div id="root"></div>
+  <div style =
   <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
@@ -20,5 +21,15 @@
 
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
     ReactDOM.render(element, document.getElementById('root'))
+
+    function Soma({num1,num2}){
+        return(
+            <react.Fragment>
+                { /* React.Fragment permite agrupar varios elementos HTML dentro de um mesmo componente React e retorná-los em conjunto */}
+                <p>O resultado da soma é</p>
+                <div>{num1 + num2}</div>
+                </react.Fragment>
+        )
+    }
   </script>
 </body>

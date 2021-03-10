@@ -12,16 +12,30 @@ import '../box-styles.css'
 
 // 🐨 add a style prop to each of them as well so their background color
 // matches what the text says it should be as well as `fontStyle: 'italic'`
-const smallBox = <div>small lightblue box</div>
-const mediumBox = <div>medium pink box</div>
-const largeBox = <div>large orange box</div>
+//const smallBox = <div className="box box--small" style={{backgroundColor:'lightblue', fontStyle:'italic'}}>small lightblue box</div>
+//const mediumBox = <div className="box box--medium" style={{backgroundColor:'pink', fontStyle:'italic', filter: 'brightness(70%)'}}>medium pink box</div>
+//const largeBox = <div className = "box box--large"style={{backgroundColor:'orange', fontStyle:'italic'}}>large orange box</div>
+
+// Se o usuario nao especificar o tamanho, a caixa sera media
+function Box({color='lightblue', style={},size = 'medium',...props}){
+   const className = 'box box--' + size // concatenacao
+   return <div className ={className} style ={{fontStyle:'italic', backgroundColor:color,...style}} {...props}></div>
+}
 
 function App() {
   return (
     <div>
-      {smallBox}
-      {mediumBox}
-      {largeBox}
+        {/* 
+            Em JSX, estilos CSS são passados como objetos para o elemento. O nome dos atributos em CSS, escritas em kebab-case, tornam-se os nomes das propriedades do objeto, mas escritas em camelCase. O valor das propriedades vai entre aspas, caso não seja numérico.
+        
+              Chave de fora é interpolação e as de dentro, objeto
+        */}
+        <div style ={ {marginTop: '20px', backgroundColor: 'blue'}}>Teste</div>
+        
+        <Box size ="small" style={{backgroundColor:'lightblue'}} id="box1">Small LightBlue Box</Box>
+        <Box style={{backgroundColor:'pink'}} id="box2">Medium Pink Box</Box>
+        <Box style={{backgroundColor:'orange'}} id="box3">Large Orange Box</Box>
+     
     </div>
   )
 }

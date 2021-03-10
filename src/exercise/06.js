@@ -3,6 +3,7 @@
 
 import * as React from 'react'
 
+
 function UsernameForm({onSubmitUsername}) {
   // 🐨 add a submit event handler here (`handleSubmit`).
   // 💰 Make sure to accept the `event` as an argument and call
@@ -18,20 +19,34 @@ function UsernameForm({onSubmitUsername}) {
 
   // 🐨 make sure to associate the label to the input.
   // to do so, set the value of 'htmlFor' prop of the label to the id of input
+function handleSubmit(event){
+    // Previne o recarregamento do formulário
+    event.preventDefault()
+    //const username = document.getElementById('username'.value)
+    const username=document.querySelector('#username').value
+    onSubmitUsername(username)
+ }
+   const usernameEl = React.useRef(null)
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
         <label>Username:</label>
-        <input type="text" />
+        {/* Associando o ref usernameEl ao input */}
+        <input ref={usernameEl} id="username" type="text" />
       </div>
       <button type="submit">Submit</button>
     </form>
   )
-}
+  }
+
+ 
 
 function App() {
-  const onSubmitUsername = username => alert(`You entered: ${username}`)
+ const onSubmitUsername = username => alert(`You entered: ${username}`)
   return <UsernameForm onSubmitUsername={onSubmitUsername} />
 }
+//Quando o formulario for enviado ('submit'), a função handleSubmit será chamada
 
-export default App
+
+export default App //porque é uma exportacao
